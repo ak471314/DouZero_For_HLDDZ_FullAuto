@@ -55,7 +55,7 @@ AllCards = ['rD', 'bX', 'b2', 'r2', 'bA', 'rA', 'bK', 'rK', 'bQ', 'rQ', 'bJ', 'r
             'b9', 'r9', 'b8', 'r8', 'b7', 'r7', 'b6', 'r6', 'b5', 'r5', 'b4', 'r4', 'b3', 'r3']
 
 helper = GameHelper()
-helper.ScreenZoomRate = 1.25
+helper.ScreenZoomRate = 1
 
 def manual_landlord_requirements(cards_str):
     counter = collections.Counter(cards_str)
@@ -261,7 +261,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
         ai_players = [self.user_position,
                       DeepAgent(self.user_position, self.card_play_model_path_dict[self.user_position])]
-        # ai_players2 = [self.user_position,
+        # ai_players = [self.user_position,
         #                DeepAgent(self.user_position, self.card_play_wp_model_path[self.user_position])]
         self.env = GameEnv(ai_players, None)
 
@@ -866,9 +866,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
                 chaojijiabei_btn = helper.LocateOnScreen("chaojijiabei_btn", region=self.GeneralBtnPos, confidence=0.78)
                 if chaojijiabei_btn is None and self.stop_when_no_chaojia:
-                    self.AutoPlay = False
-                    self.SwitchMode.setText("自动" if self.AutoPlay else "单局")
-                    self.sleep(10)
+                    # self.AutoPlay = False
+                    # self.SwitchMode.setText("自动" if self.AutoPlay else "单局")
+                    # self.sleep(10)
                     print("检测到没有超级加倍卡，已停止自动模式")
                 if win_rate > JiabeiThreshold[0]:
                     chaojijiabei_btn = helper.LocateOnScreen("chaojijiabei_btn", region=self.GeneralBtnPos, confidence=0.78)
